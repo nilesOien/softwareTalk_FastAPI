@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+
+<HEAD>
+  <TITLE>FastAPI viewer</TITLE>
+  <LINK type="text/css" href="styleSheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+ <P>
+  <big><big><b>Simple Image Viewer</b></big></big>
+ </p>
+
+ <P>
+ Start time YYYYMMDDhhmmss :
+  <input type="text" id="startBox" name="start time" value="20251111080000" 
+  size="14"maxlength="14">
+
+ End time YYYYMMDDhhmmss :
+  <input type="text" id="endBox" name="start time" value="20251111140000" 
+  size="14"maxlength="14">
+
+ Comma separated sites :
+  <input type="text" id="sitesBox" name="start time" value="T" 
+  size="12"maxlength="12">
+
+ </p>
+
+ <P>
+  <INPUT name="Load"    value="Load"    type="Button" onClick="load()">
+  <INPUT name="First"   value="First"   type="Button" onClick="first()">
+  <INPUT name="Play"    value="Play"    type="Button" onClick="play()" id="playButton">
+  <INPUT name="Last"    value="Last"    type="Button" onClick="last()">
+  <INPUT name="Faster"  value="Faster"  type="Button" onClick="faster()">
+  <INPUT name="Slower"  value="Slower"  type="Button" onClick="slower()">
+  <INPUT name="Reverse" value="Reverse" type="Button" onClick="reverse()" id="dirButton">
+ </p>
+
+ <P>
+  <progress  id="loadProgressBar"></progress>
+ </p>
+
+ <P>
+  <IMG id="displayImage" SRC="aurora.jpg" alt="Loading...">
+ </p>
+
+ <P>
+  <progress  id="imageProgressBar"></progress>
+ </p>
+
+ <P>
+   Cadence :
+  <input type="text" id="cadenceBox" name="start time" value="1" 
+  size="5"maxlength="5">
+  <INPUT name="Apply"  value="Apply"  type="Button" onClick="cadence()">
+ </p>
+
+
+ <script src="globals.js"></script>
+ <script src="faster.js"></script>
+ <script src="first.js"></script>
+ <script src="last.js"></script>
+ <script src="load.js"></script>
+ <script src="play.js"></script>
+ <script src="reverse.js"></script>
+ <script src="slower.js"></script>
+ <script src="cadence.js"></script>
+
+</body>
+

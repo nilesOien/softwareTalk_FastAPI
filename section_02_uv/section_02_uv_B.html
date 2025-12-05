@@ -1,0 +1,74 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large">The uv package manager</p>
+
+<P>
+With <B>uv</b> the process is a bit different. Of
+course, uv has to be installed for this to work.
+</p>
+<P>
+First, we can optionally select a version of python
+(3.13 here) using the <b>uv python pin</b> command like so :
+<PRE class="code" style="width: 30%; overflow: auto;">
+
+ $ uv python pin 3.13
+
+</PRE>
+
+
+<P>Then using <b>uv</b> we intialize a project, set up a virtual environment,
+set up a file <B>requirements.in</b> that lists dependencies (sunpy here)
+and install the dependencies, like so :
+<PRE class="code" style="width: 90%; overflow: auto;">
+
+ $ cd uv/
+ $ cat requirements.in
+   sunpy[all]
+ $ uv init --name uv_example --description "An example of uv" --bare .
+ $ uv run python --version
+   Python 3.13.7
+ $ uv add -r requirements.in
+
+</PRE>
+That install takes about <B>3 seconds</b> on my machine.
+</p>
+
+<p>
+Then, using uv, we run the program :
+<PRE class="code" style="width: 50%; overflow: auto;">
+
+ $ uv run ../sunpyPrintVersion.py
+ 7.0.3
+
+</PRE>
+Notice the difference between <b>uv</b> and <b>pip</b>. While pip relies on
+entering an environment, uv relies on running things through the <b>uv run</b>
+command. Also the later version of python has resulted in a later version
+of sunpy being installed.
+</P>
+<P>
+The uv package manager is used for the remainder of this discussion.
+</p>
+
+<table class="indexTable">
+	<td class="coral"><a href="section_02_uv_A.html">
+                        Previous</a>
+	</td>
+	<td class="fullWidth coral"></td>
+	<td class="coral rightText"><a href="../section_03_ruff/section_03_ruff_A.html">
+			Next </a>
+	</td>
+</table>
+
+<P class="footnote">
+section_02_uv
+</p>
+
+</body>
+

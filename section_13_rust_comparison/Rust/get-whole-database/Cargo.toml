@@ -1,0 +1,14 @@
+[package]
+name = "get-whole-database"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+actix-web = "4"
+env_logger = "0.10" # Use the latest compatible version
+log = "0.4"
+actix-files = "0.6"
+sqlx = { version = "0.8", features = ["runtime-tokio", "sqlite"] }
+dotenvy = "0.15" # For loading environment variables
+serde = "1.0"
+

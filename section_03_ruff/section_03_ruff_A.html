@@ -1,0 +1,87 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large">The ruff python code check utility</p>
+
+<P>
+The <B>ruff</b> utility (also written in Rust) 
+is a popular python tool for checking python code.
+</p>
+
+<P>
+To install it, add "ruff" to the list of packages to be installed
+in the file requirements.in and then :
+</p>
+
+<PRE class="code" style="width: 90%; overflow: auto;">
+
+ $ uv init --name ruff_example --description "An example of ruff" --bare .
+ $ uv add -r requirements.in
+
+</PRE>
+The script installPackages.sh does the same thing.
+</p>
+
+<p>
+Then ruff can be used to check all python files :
+<PRE class="code" style="width: 50%; overflow: auto;">
+
+ $ uv run ruff check
+ F401 [*] `os` imported but unused
+   --> helloWorld.py:8:8
+    |
+  6 | # $ uv run ruff check --fix
+  7 |
+  8 | import os
+    |        ^^
+  9 |
+ 10 | print("Hello world")
+    |
+ help: Remove unused import: `os`
+
+ Found 1 error.
+ [*] 1 fixable with the `--fix` option.
+
+</PRE>
+</p>
+
+<P>
+ruff has detected an unused import in the file helloWorld.py
+which could be fixed by running
+<PRE class="code" style="width: 50%; overflow: auto;">
+
+ $ uv run ruff check --fix
+
+</PRE>
+</p>
+
+<P>
+<B>NOTE :</b> If ruff finds any issues, then it will exit with a non-zero
+exit code. Otherwise if things are fine then the exit code is zero.
+</p>
+<P>
+That may seem trivial, but it's actually an important point that
+we'll come back to later.
+</p>
+
+<table class="indexTable">
+	<td class="coral"><a href="../section_02_uv/section_02_uv_B.html">
+                        Previous</a>
+	</td>
+	<td class="fullWidth coral"></td>
+	<td class="coral rightText"><a href="../section_04_fastapi_dict/section_04_fastapi_dict_A.html">
+			Next </a>
+	</td>
+</table>
+
+<P class="footnote">
+section_03_ruff
+</p>
+
+</body>
+

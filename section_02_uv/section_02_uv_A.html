@@ -1,0 +1,61 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large">The uv package manager</p>
+
+<P>
+The <B>uv</b> utility (written in Rust, pronounced "you vee") 
+is a popular package manager that is much faster than the default
+python package manager, pip.
+</p>
+
+<P>
+To compare the two, let's run the program <B>sunpyPrintVersion.py</b>, 
+which simply prints the version of sunpy,
+under both package managers.
+</p>
+
+<P>Using <b>pip</b> we set up a virtual environment, enter it, then
+install the sunpy package, like so :
+<PRE class="code" style="width: 90%; overflow: auto;">
+
+ $ cd pip/
+ $ python -m venv $HOME/sofwareTalk/02_uv/pip/pyEnv      # Make the env
+ $ source $HOME/sofwareTalk/02_uv/pip/pyEnv/bin/activate # Enter the env (the command line prompt changes)
+ (pyEnv) $ pip install --upgrade pip                     # Update pip in the env (not essential)
+ (pyEnv) $ pip install "sunpy[all]"                      # ...and install sunpy
+
+</PRE>
+That installs sunpy, with the install taking about <B>30 seconds</b> on my machine.
+</p>
+<p>
+Then, still in the env, run the program :
+<PRE class="code" style="width: 50%; overflow: auto;">
+
+ (pyEnv) $ ../sunpyPrintVersion.py
+ 5.1.5
+
+</PRE>
+In the next section we do the same using uv.
+
+<table class="indexTable">
+	<td class="coral"><a href="../section_01_bat/section_01_bat_E.html">
+                        Previous</a>
+	</td>
+	<td class="fullWidth coral"></td>
+	<td class="coral rightText"><a href="section_02_uv_B.html">
+			Next </a>
+	</td>
+</table>
+
+<P class="footnote">
+section_02_uv
+</p>
+
+</body>
+
