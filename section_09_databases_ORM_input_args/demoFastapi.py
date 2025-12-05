@@ -36,7 +36,7 @@ tags_metadata = [
     },
     {
         "name":"database-dict-service",
-        "description":"An end point that serves out a list of dictionaries pointing to H-Alpha data. minTime and maxTime are in YYYYMMDDhhmmss format, siteCSV is a comma separated list of site codes. Setting minTime=20251015000000, maxTime=20251015235959, siteCSV=L,C would retrieve data for October 15 2025 for the sites Learmonth and Cerro Tololo."
+        "description":"An end point that serves out a list of dictionaries pointing to H-Alpha data. minTime and maxTime are in YYYYMMDDhhmmss format, siteCSV is a comma separated list of site codes. Setting minTime=20251015000000, maxTime=20251015235959, siteCSV=L,C would retrieve data for October 15 2025 for the sites Learmonth and Cerro Tololo. An upper limit of 5 (for example) on the number of dictionaries to be returned can be set with limitNum=5"
     },
     {
         "name":"database-summary-service",
@@ -118,7 +118,10 @@ class responseClass(BaseModel) :
     size:     int
 
 @demoApp.get("/database-dict", response_model=List[responseClass], tags=['database-dict-service'])
-async def get_halpha_urls(minTime: str = Query(default=None), maxTime: str = Query(default=None), siteCSV: str = Query(default=None)):
+async def get_halpha_urls(minTime:  str = Query(default=None),
+                          maxTime:  str = Query(default=None),
+                          siteCSV:  str = Query(default=None),
+                          limitNum: int = Query(default=None)):
     """
     Returns a list of dictionaries applicable to H-Alpha data.
     """
@@ -169,7 +172,16 @@ async def get_halpha_urls(minTime: str = Query(default=None), maxTime: str = Que
         # when used in a function call
         # takes an iterable (like a list or tuple) and
         # unpacks its elements as separate positional
-        # arguments to the function (in this case the or_()
+        # arguments, so for example we can :
+        # >>> x=[1,2,3]  # A list
+        # >>> print(x)   #
+        # [1, 2, 3]      # Printed the list
+        # >>> print(*x)  #
+        # 1 2 3          # Printed the list as positional parameters
+        #
+        # So we can pass the elements of a list
+        # to the function as positional arguments
+        # (in this case the or_()
         # function).
         #
         # So make the list of filters that we want to throw at or_() :
@@ -181,6 +193,12 @@ async def get_halpha_urls(minTime: str = Query(default=None), maxTime: str = Que
 
     # Specify the order to return results in.
     query = query.order_by(tableModel.datatime, tableModel.site)
+
+    # Set an upper limit on the number of rows
+    # from the database to return, if specified.
+    # Have to do this limit() after the order_by()
+    if limitNum is not None :
+        query = query.limit(limitNum)
 
     # It's also possible to specify a limit on how many to return.
     # Useful when developing when you don't want to get clobbered
