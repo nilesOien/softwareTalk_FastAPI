@@ -1,0 +1,74 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large">Aside : shallow copies</p>
+
+<P>
+What will this code in <B>shallowListOfDictionaries.py</b> do?<br>
+<PRE class="code">
+#!/usr/bin/env python
+
+# Show shallow copies
+
+import pprint
+
+# Set up a list of dictionaries.
+l=[] # Empty list
+
+d={} 
+d['integer'] = 3
+d['float'] = 3.1415927
+d['string'] = 'Niles Oien'
+l.append(d)
+
+# d={} Commented out the re-init of d to show shallow copy
+d['integer'] = 1
+d['float'] = 2.71828
+d['string'] = 'Sedona Crouch'
+l.append(d)
+
+# d={}
+d['integer'] = 2
+d['float'] = 1.41
+d['string'] = 'Mickey Mouse'
+l.append(d)
+
+# This prints the following :
+# [{'float': 1.41, 'integer': 2, 'string': 'Mickey Mouse'},
+#  {'float': 1.41, 'integer': 2, 'string': 'Mickey Mouse'},
+#  {'float': 1.41, 'integer': 2, 'string': 'Mickey Mouse'}]
+# That's right - the last element three times. Because when
+# we do this :
+# l.append(d)
+# It's doing a *shallow* copy of dictionary d when it appends
+# it to the end of list l, so we get the last dictionary
+# three times, because d always points to the same object.
+
+
+pprint.pprint(l)
+
+quit()
+</PRE>
+</p>
+
+<table class="indexTable">
+	<td class="coral"><a href="section_01_bat_B.html">
+                        Previous</a>
+	</td>
+	<td class="fullWidth coral"></td>
+	<td class="coral rightText"><a href="section_01_bat_D.html">
+			Next </a>
+	</td>
+</table>
+
+<P class="footnote">
+section_01_bat
+</p>
+
+</body>
+

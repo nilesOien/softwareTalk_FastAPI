@@ -1,0 +1,57 @@
+/*
+ * Cascading style sheet to set a nice font.
+ */
+
+body {
+ font: 24px Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+
+.center {
+ text-align: center;
+}
+
+.large {
+ font: 36px Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+
+p.footnote {
+ font: 14px Tahoma, Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+td.fullWidth {
+  width: 90%;
+}
+
+td.coral {
+  background-color: lightcoral;
+}
+
+td.lightblue {
+  background-color: lightblue;
+}
+
+
+td.rightText {
+  text-align: right;
+}
+
+table.indexTable{
+	width: 100%;
+	border: 0;
+	border-collapse: collapse;
+}
+
+table.diagramTable{
+        border: 0;
+        border-collapse: collapse;
+	margin-left: auto;
+        margin-right: auto;
+}
+
+
+pre.code {
+   color: lightgreen;
+   background-color: black;
+}
+
