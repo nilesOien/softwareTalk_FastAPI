@@ -1,0 +1,105 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large"></p>
+
+<P><B>Aside : git hooks</b></p>
+
+<P>
+<ul>
+ <li> <B>ruff</b> exits with zero status only if the Python code checks are OK
+ <li> <B>pytest</b> exits with zero status only if the unit tests are OK
+ <li> A <B>git hook</b> is a script with a very specific name that 
+	 exits with zero status only if
+	 if everything is OK. 
+ <li> <B>git actions can only proceed if the hook passes (exits
+		 with zero)</b>
+</ul>
+Below is an example that exits with 0 only if <b>ruff</b> and
+<b>pytest</b> pass. If this script appears in the git repo root directory
+as ../.git/hooks/pre-commit then you can't commit unless
+ruff and pytest pass their tests.
+</p>
+
+<P>
+You can't check the hook in to that position for security reasons,
+so you have to link it into place.
+</p>
+
+<PRE class="code" style="width: 90%; overflow: auto;">
+
+$ cat preCommitHook.sh
+#!/bin/bash
+
+# Script that runs unit tests and ruff code tests.
+# Can be used as a git hook. To do that it needs
+# to be installed as a hook with :
+#
+# $ cd ../.git/hooks/
+# $ ln -sf ../../section_06_unit_tests_and_git_hooks/preCommitHook.sh pre-commit
+#
+# Once this is installed as a pre commit hook, both
+# unit tests and ruff code check have to pass for
+# git to accept a commit. Hook scripts have to exit
+# with 0 status for the requested action to go ahead.
+# It's also possible to have pre-push hooks, I just like
+# pre-commit hooks more.
+
+# Make sure we're in the right directory.
+if [ -d section_06_unit_tests_and_git_hooks ]
+then
+ cd section_06_unit_tests_and_git_hooks
+fi
+
+# Run unit tests. Exit with status if they fail.
+# They fail if they have non-zero status.
+echo Running unit tests...
+uv run pytest -v
+status="$?"
+if [ "$status" -ne 0 ]
+then
+ echo Unit tests failed, exiting
+ exit $status
+fi
+
+# Run ruff code checks - similar, exit if they fail.
+echo
+echo Running code checks...
+uv run ruff check
+status="$?"
+if [ "$status" -ne 0 ]
+then
+ echo Code check failed, exiting
+ exit $status
+fi
+
+# If we made it to here, we passed.
+# We can exit with 0 status
+# which means that the commit can go ahead.
+echo
+echo Passed unit tests and code check
+exit 0
+
+</pre>
+
+<table class="indexTable">
+	<td class="coral"><a href="section_06_unit_tests_and_git_hooks_C.html">
+                        Previous</a>
+	</td>
+	<td class="fullWidth coral"></td>
+	<td class="coral rightText"><a href="section_06_unit_tests_and_git_hooks_E.html">
+			Next </a>
+	</td>
+</table>
+
+<P class="footnote">
+section_06_unit_tests_and_git_hooks
+</p>
+
+</body>
+

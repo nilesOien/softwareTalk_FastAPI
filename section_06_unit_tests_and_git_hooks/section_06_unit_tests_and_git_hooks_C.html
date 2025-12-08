@@ -1,0 +1,52 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large">Unit tests in test_demoFastapi.py</p>
+
+<P><B>uv run pytest -v</b> output below :</p>
+
+<PRE class="code" style="width: 90%; overflow: auto;">
+
+$ uv run pytest -v
+============================= test session starts ==============================
+platform linux -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- /home/noien/softwareTalk_FastAPI/section_06_unit_tests_and_git_hooks/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /home/noien/softwareTalk_FastAPI/section_06_unit_tests_and_git_hooks
+configfile: pyproject.toml
+plugins: anyio-4.12.0
+collected 8 items
+
+test_demoFastapi.py::test_getGoodStatus PASSED                           [ 12%]
+test_demoFastapi.py::test_allKeysPresent PASSED                          [ 25%]
+test_demoFastapi.py::test_keysCorrectType PASSED                         [ 37%]
+test_demoFastapi.py::test_firstNameValue PASSED                          [ 50%]
+test_demoFastapi.py::test_lastNameValue PASSED                           [ 62%]
+test_demoFastapi.py::test_numPetsValue PASSED                            [ 75%]
+test_demoFastapi.py::test_usesPiApproximationValue PASSED                [ 87%]
+test_demoFastapi.py::test_likesAurorasTooMuchValue PASSED                [100%]
+
+============================== 8 passed in 0.29s ===============================
+
+</pre>
+
+<table class="indexTable">
+	<td class="coral"><a href="section_06_unit_tests_and_git_hooks_B.html">
+                        Previous</a>
+	</td>
+	<td class="fullWidth coral"></td>
+	<td class="coral rightText"><a href="section_06_unit_tests_and_git_hooks_D.html">
+			Next </a>
+	</td>
+</table>
+
+<P class="footnote">
+section_06_unit_tests_and_git_hooks
+</p>
+
+</body>
+
