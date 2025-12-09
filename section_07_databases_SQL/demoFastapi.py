@@ -59,7 +59,7 @@ class responseClass(BaseModel) :
     usesPiApproximation: float
     likesAurorasTooMuch: int # This used to be a bool but
                              # sqlite doesn't support bool
-                             # soi I made it an int.
+                             # so I made it an int.
 
 
 # Serve out the static dictionary as JSON, now with expected response
