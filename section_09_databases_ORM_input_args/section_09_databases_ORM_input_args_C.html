@@ -1,0 +1,94 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large">The Concept of FastAPI</p>
+
+<P>
+<table class="diagramTable center large">
+
+	<tr>
+	<td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+	<td class="lightBlue">Client request<br>(parameters)</td>
+        <td></td>
+        <td></td>
+        </tr>
+
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>|</td>
+        <td></td>
+	<td></td>
+        </tr>
+
+	<tr>
+	<td class="lightBlue">Database<br>(.env file)</td>
+        <td> &lt--&gt </td>
+	<td class="lightBlue">Python structure<br>(list of dictionaries)</td>
+	<td> &lt--&gt </td>
+	<td class="lightBlue">FastAPI + Pydantic<br>(uvicorn, tested)</td>
+	<td> ---&gt </td>
+        <td class="lightBlue">Served out<br>JSON</td>
+	</tr>
+
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>|</td>
+        </tr>
+
+        <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+	<td class="lightBlue">Client<br>answer</td>
+        </tr>
+
+
+</table>
+</p>
+
+<P>
+From the point of view of the person programming the client application, they have accessed data
+through an interface - hence, this is an
+<B>A</b>pplication <B>P</b>rogrammer <B>I</b>nterface (API).
+</p>
+
+<P>
+With the server running, let's shift perspectives and look at things
+from the client's point of view.
+</p>
+
+<table class="indexTable">
+<td class="coral"><a href="section_09_databases_ORM_input_args_B.html">
+		Previous</a>
+</td>
+<td class="fullWidth coral"></td>
+<td class="coral rightText"><a href="section_09_databases_ORM_input_args_C.html">
+		Next </a>
+</td>
+</table>
+
+<P class="footnote">
+section_09_databases_ORM_input_args
+</p>
+
+</body>
+

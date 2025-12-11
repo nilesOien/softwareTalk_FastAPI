@@ -6,14 +6,15 @@
 
 <BODY>
 
-<P class="center large">Adding a database</p>
+<P class="center large">sqlAlchemy - An Object Relation Mapper (ORM)</p>
 
 <P>
-Get a list of dictionaries by fetching an entire database table, see
-demoFastapi.py. 
+An ORM system, like sqlAlchemy, maps database tables into
+objects, eliminating the need for writing raw SQL.
 </p>
+
 <P>
-Uses a .env file to connect to the database.
+The code below takes an ORM approach rather than assembling SQL.
 </p>
 
 <PRE class="code" style="width: 90%; overflow: auto;">
@@ -33,7 +34,10 @@ from dotenv import load_dotenv
 import os
 
 # Database imports.
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, Column, String, Float, Integer
+from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import sessionmaker
+
 
 # Set up tags that appear in the documentation pages that FastAPI generates.
 tags_metadata = [
@@ -47,13 +51,13 @@ tags_metadata = [
     },
     {
         "name":"database-dict-service",
-        "description":"An end point that serves out a list of dictionaries from a small database.",
+        "description":"An end point that serves out a list of dictionaries from a small database using an object relational mapper (ORM).",
     }
    ]
 
 # Get an application object
 demoApp = FastAPI(title="Fast API Example",
-        summary="Serves out a database using SQL to talk to the database",
+        summary="Serves out a database using an ORM to talk to the database",
         description="Introduces a database",
         contact={
           "name": "Niles Oien",
@@ -82,7 +86,7 @@ class responseClass(BaseModel) :
                              # so I made it an int.
 
 
-# Serve out the static dictionary as JSON, now with expected response
+# Serve out database table dictionary as JSON, now with expected response
 # as a list of dicts.
 @demoApp.get("/database-dict", response_model=List[responseClass], tags=['database-dict-service'])
 async def get_database_dict():
@@ -107,8 +111,6 @@ async def get_database_dict():
         print("DATABASE_URL not in environment file DotEnv")
         quit()
 
-    engine = create_engine(dbURL)
-
     # The table we're trying to connect to is :
     # CREATE TABLE IF NOT EXISTS small (
     #     firstName           TEXT NOT NULL,
@@ -117,34 +119,45 @@ async def get_database_dict():
     #     usesPiApproximation REAL NOT NULL,
     #     likesAurorasTooMuch INT  NOT NULL
     # );
+    #
+    # Create a class that models that table. Must have at least one primary key.
+    Base = declarative_base()
+    class tableModel(Base):
+        __tablename__ = "small"
+        firstName=          Column('firstName',           String, primary_key=True)
+        lastName=           Column('lastName',            String, primary_key=True)
+        numBikes=           Column('numBikes',            Integer)
+        usesPiApproximation=Column('usesPiApproximation', Float)
+        likesAurorasTooMuch=Column('likesAurorasTooMuch', Integer)
 
-    with engine.connect() as connection:
-        result = connection.execute(text("select firstName, lastName, numBikes, usesPiApproximation, likesAurorasTooMuch from small"))
-        # Process the results into a list of dictionaries.
-        outList=[]
-        for row in result:
-            d = { "firstName": row.firstName, "lastName": row.lastName, "numBikes": row.numBikes, "usesPiApproximation": row.usesPiApproximation, "likesAurorasTooMuch": row.likesAurorasTooMuch }
-            outList.append(d)
+    # Connect to the database.
+    engine = create_engine(dbURL)
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    db = SessionLocal()
 
-    # Return the list of dicts so it gets served out.
-    return outList
+    # Query is pretty simple - get the whole table.
+    db_results = db.query(tableModel).all()
+
+    db.close()
+
+    # Return the results, which are the list of dicts to be served out.
+    return db_results
 
 </PRE>
 
 
-
 <table class="indexTable">
-	<td class="coral"><a href="../section_06_unit_tests_and_git_hooks/section_06_unit_tests_and_git_hooks_D.html">
-                        Previous</a>
-	</td>
-	<td class="fullWidth coral"></td>
-	<td class="coral rightText"><a href="section_07_databases_SQL_B.html">
-			Next </a>
-	</td>
+<td class="coral"><a href="../section_07_databases_SQL/section_07_databases_SQL_D.html">
+		Previous</a>
+</td>
+<td class="fullWidth coral"></td>
+<td class="coral rightText"><a href="../section_09_databases_ORM_input_args/section_09_databases_ORM_input_args_A.html">
+		Next </a>
+</td>
 </table>
 
 <P class="footnote">
-section_07_databases_SQL
+section_08_databases_ORM
 </p>
 
 </body>

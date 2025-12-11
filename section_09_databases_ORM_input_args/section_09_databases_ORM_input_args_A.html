@@ -1,3 +1,25 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large">Adding input arguments</p>
+
+<P>
+With input arguments, we can filter to get what we need from the database,
+and using an ORM makes the filtering easy. So now we can connect to
+a "real" sized database.
+</p>
+
+<P>
+This database has H-Alpha data for October and part of November in it. 
+</p>
+
+<PRE class="code" style="width: 90%; overflow: auto;">
+
 #!/usr/bin/env python
 
 from fastapi import FastAPI, HTTPException, Query
@@ -189,7 +211,7 @@ async def get_halpha_urls(minTime:  str = Query(default=None),
         # And then use the unpacking operator to throw them all at or_()
         # as positional arguments :
         query = query.filter(or_(*site_filters))
-    
+
 
     # Specify the order to return results in.
     query = query.order_by(tableModel.datatime, tableModel.site)
@@ -302,4 +324,23 @@ async def get_halpha_summary(minTime: str = Query(default=None),
     list_of_dicts = [row._asdict() for row in db_results]
 
     return list_of_dicts
+
+</PRE>
+
+
+<table class="indexTable">
+<td class="coral"><a href="../section_08_databases_ORM/section_08_databases_ORM_A.html">
+		Previous</a>
+</td>
+<td class="fullWidth coral"></td>
+<td class="coral rightText"><a href="section_09_databases_ORM_input_args_B.html">
+		Next </a>
+</td>
+</table>
+
+<P class="footnote">
+section_09_databases_ORM_input_args
+</p>
+
+</body>
 
