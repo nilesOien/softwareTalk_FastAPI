@@ -1,3 +1,11 @@
 */__pycache__
 */pyproject.toml
 */uv.lock
+section_10_download_client/data
+section_13_rust_comparison/Python/__pycache__/
+section_13_rust_comparison/Python/pyproject.toml
+section_13_rust_comparison/Python/uv.lock
+section_13_rust_comparison/Rust/get-whole-database/Cargo.lock
+section_13_rust_comparison/Rust/get-whole-database/target/
+section_13_rust_comparison/py.json
+section_13_rust_comparison/rust.json

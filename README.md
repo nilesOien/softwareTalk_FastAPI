@@ -9,7 +9,7 @@ package manager uv is installed. For the speed comparison
 with Rust, the Rust compiler needs to be installed. If you want to build
 the sqlite databases yourself, or look at the databases,
 then the sqlite3 utility needs to be installed
-(although you should not have to do that).
+(although you should not have to do that). One of the clents uses R.
 
 Standard methods for installing these are available for common architectures
 with a simple internet search. A reasonably recent version of
@@ -24,3 +24,6 @@ is covered in the slides, hence this README is pretty brief.
 
 Basically, start with index.html.
 
+The directory being discussed in a slide is
+noted as a footnote at the lower left of the
+slide.
