@@ -1,0 +1,62 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large">Downloading the data in parallel</p>
+
+<P>
+With the server from the pervious section running, 
+this shell script runs a Python program that uses the parfive
+package to download the data in parallel.
+</p>
+
+
+<PRE class="code" style="width: 90%; overflow: auto;">
+
+#!/bin/bash
+
+# Run the demo and download some H-Alpha data.
+# The demo server in section 9 must be running
+# for this to work.
+#
+# Note that you can :
+# uv run downloadClient.py --help
+# to get command line help, since standard argument parsing is used.
+#
+
+rm -rf data
+startSec=`date --utc +%s`
+uv run ./downloadClient.py --minTime 20251027000000 --maxTime 20251027235959 \
+	                    --outDir ./data --siteCSV L,C
+
+endSec=`date --utc +%s`
+elapsedSec=`expr "$endSec" - "$startSec"`
+
+echo Download size in $elapsedSec seconds :
+du -sh data/
+
+exit 0
+
+</PRE>
+
+
+<table class="indexTable">
+<td class="coral"><a href="../section_09_databases_ORM_input_args/section_09_databases_ORM_input_args_C.html">
+		Previous</a>
+</td>
+<td class="fullWidth coral"></td>
+<td class="coral rightText"><a href="section_10_download_client_B.html">
+		Next </a>
+</td>
+</table>
+
+<P class="footnote">
+section_10_download_client
+</p>
+
+</body>
+

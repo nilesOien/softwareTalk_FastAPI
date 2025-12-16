@@ -1,0 +1,57 @@
+<HEAD>
+  <TITLE>FastAPI</TITLE>
+  <LINK type="text/css" href="../stylesheet.css" media="screen" rel="stylesheet" title="Default" >
+  <meta charset="UTF-8">
+</HEAD>
+
+<BODY>
+
+<P class="center large">Other frameworks, other languages</p>
+
+<P>
+FastAPI is a Python API framework. There are other Python frameworks,
+and other frameworks in other languages.
+</p>
+<P>
+I coded a very simple server in both Python's FastAPI and Rust's Actix Web
+and compared the two. The Python one ran in about 3 seconds, the Rust
+one ran in about 4. When Postgres was the database instead of sqlite,
+the Rust one was slightly faster than Python.
+</p>
+
+<PRE class="code" style="width: 30%; overflow: auto;">
+
+Python service :
+Python pass 1
+2.78
+Python pass 2
+2.79
+Python pass 3
+2.81
+Rust service :
+Rust pass 1
+3.97
+Rust pass 2
+4.19
+Rust pass 3
+4.19
+
+
+</PRE>
+
+<table class="indexTable">
+<td class="coral"><a href="../section_12_web_client/section_12_web_client_A.html">
+		Previous</a>
+</td>
+<td class="fullWidth coral"></td>
+<td class="coral rightText"><a href="../section_14_finale/section_14_finale_A.html">
+		Next </a>
+</td>
+</table>
+
+<P class="footnote">
+section_13_rust_comparison
+</p>
+
+</body>
+
