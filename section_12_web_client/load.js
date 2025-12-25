@@ -60,7 +60,17 @@ async function load() {
  console.log("Fetching image list from FastAPI server URL " + url);
 
  // Get data from the server.
- let response = await fetch(url);
+ let problemLoading=false;
+ let response = await fetch(url).catch(error => {
+  console.log(error.message);
+  alert("Failed to fetch list (is the server running?)");
+  problemLoading=true;
+  return;
+ });
+
+ if (problemLoading){
+  return;
+ }
 
  if (response.status != 200) {
   alert(response.statusText);
