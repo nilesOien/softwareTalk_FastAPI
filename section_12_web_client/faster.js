@@ -1,4 +1,4 @@
-
+// We go here when the faster button is clicked.
 function faster() {
 
  if (!(active)){

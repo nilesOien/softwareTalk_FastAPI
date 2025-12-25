@@ -1,4 +1,4 @@
-
+// We go here when the reverse button is clicked.
 function reverse() {
 
  if (!(active)){

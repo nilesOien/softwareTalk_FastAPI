@@ -1,7 +1,11 @@
-
+// Small function called when we load an image.
+// Advances the progress bar.
 function loadedImage(){
 
  num_loaded++;
+ let percentDone = (100.0*num_loaded/image_urls.length).toFixed(2);
+ console.log("Loaded image " + num_loaded + " of " + image_urls.length + " (" + percentDone + "%) " + `${this.src}`);
+
  let pBar = document.getElementById('loadProgressBar');
  pBar.value=num_loaded;
 
@@ -21,12 +25,15 @@ function loadedImage(){
   let ipBar = document.getElementById('imageProgressBar');
   ipBar.max=num_loaded;
   ipBar.value=num_loaded;
+  console.log("Completed load of " + image_urls.length + " images");
  }
 
  return;
 }
 
 
+// We call this function when the load button is clicked.
+// Assembles the FastAPI URL to get the image list from and calls it.
 async function load() {
 
  active=false;
@@ -49,6 +56,8 @@ async function load() {
  if (sites.length > 0){
   url = url + "&siteCSV=" + sites;
  }
+
+ console.log("Fetching image list from FastAPI server URL " + url);
 
  // Get data from the server.
  let response = await fetch(url);
@@ -82,8 +91,8 @@ async function load() {
   image_array[i] = new Image();
   image_array[i].onload=loadedImage;  // Call loadedImage() when we load an image.
   image_array[i].src = image_urls[i]; // This starts the image load.
+  console.log("Initiating loading of image " + image_urls[i]);
  }
-
 
  return;
 

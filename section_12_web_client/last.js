@@ -1,4 +1,4 @@
-
+// We go here when the last button is clicked.
 function last() {
 
  if (!(active)){

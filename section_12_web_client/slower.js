@@ -1,4 +1,4 @@
-
+// We go here when the slower button is clicked.
 function slower() {
 
  if (!(active)){

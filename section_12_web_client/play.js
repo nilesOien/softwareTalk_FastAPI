@@ -1,4 +1,4 @@
-
+// We go here when the play button is clicked.
 function play() {
 
  if (!(active)){
@@ -22,6 +22,7 @@ function play() {
 
 }
 
+// Internal function to advance the displayed image to the next one.
 function advance_image(){
 
  if (!(active)) return;
@@ -46,6 +47,9 @@ function advance_image(){
  let ipBar = document.getElementById('imageProgressBar');
  ipBar.value = image_index;
 
+ console.log("Displaying image " + image_index + " of " + num_loaded);
+
+ // Call this function again after a delay.
  setTimeout(advance_image, wait_time);
 
  return;

@@ -1,4 +1,4 @@
-
+// We go here when a cadence is applied.
 function cadence() {
 
  if (!(active)) return;

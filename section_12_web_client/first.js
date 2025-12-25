@@ -1,4 +1,4 @@
-
+// We go here when the first button is clicked.
 function first() {
 
  if (!(active)){
