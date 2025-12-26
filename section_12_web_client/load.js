@@ -104,6 +104,8 @@ async function load() {
   console.log("Initiating loading of image " + image_urls[i]);
  }
 
+ console.log("-- End of image load initiation --");
+
  return;
 
 }
