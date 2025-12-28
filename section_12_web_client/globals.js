@@ -8,3 +8,4 @@ var image_increment_sign = 1; // Image increment sign
 var image_increment_mag = 1;  // Image increment magnitude
 var num_loaded = 0;           // How many images have we loaded
 var wait_time = 50;           // Delay in playing.
+var mostRecentImageSrc;       // URL for most recent image, which is the first to be loaded and displayed.

@@ -9,13 +9,14 @@ function loadedImage(){
  let pBar = document.getElementById('loadProgressBar');
  pBar.value=num_loaded;
 
- // If it's the first image loaded, then it's the
+ // If it's the most recent image, thenit's the
  // last in the time sequence because we loaded
  // backwards, so display it, and set the index.
- if (num_loaded == 1){
-  displayImage = document.getElementById('displayImage');
+ if (`${this.src}` == mostRecentImageSrc){
+  let displayImage = document.getElementById('displayImage');
   image_index = image_urls.length - 1;
   displayImage.src = image_array[image_index].src;
+  console.log("Most recent image " + mostRecentImageSrc + " was loaded as number " + num_loaded);
  }
 
  // If it's the last image, activate the buttons.
@@ -80,6 +81,15 @@ async function load() {
  let data = await response.text();
  let reply=JSON.parse(data);
 
+ // Did we get any data?
+ // Alert and revert to default image if not.
+ if (reply.length == 0){
+  alert("No data found for specified sites and times");
+  let displayImage = document.getElementById('displayImage');
+  displayImage.src = 'aurora.jpg';
+  return;
+ }
+
  // Load the URLs into image_urls, and make the
  // adjustment so that they point to images rather than
  // data files.
@@ -97,10 +107,16 @@ async function load() {
 
  // Load images backwards so we get the last image first.
  image_array = Array(image_urls.length);
+ let first=true;
  for(var i = image_urls.length - 1; i > -1; i--) {
   image_array[i] = new Image();
   image_array[i].onload=loadedImage;  // Call loadedImage() when we load an image.
   image_array[i].src = image_urls[i]; // This starts the image load.
+  if (first){
+   first=false;
+   mostRecentImageSrc=image_urls[i];
+   console.log("First image requested (last in sequence) is " + mostRecentImageSrc);
+  }
   console.log("Initiating loading of image " + image_urls[i]);
  }
 
