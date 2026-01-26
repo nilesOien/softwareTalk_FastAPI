@@ -34,6 +34,13 @@ demoApp = FastAPI(title="Fast API Example with Pydantic checking",
         version="1.0.0",
         openapi_tags=tags_metadata)
 
+# Add a function that is never called just to
+# show how that appears in a unit test coverage
+# report.
+def neverCalled():
+    print("This function is never called")
+    return
+
 # Define a static dictionary
 static_data = {
     "firstName": "Niles",

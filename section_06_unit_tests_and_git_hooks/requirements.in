@@ -3,4 +3,5 @@ uvicorn
 email-validator
 httpx
 pytest
+pytest-cov
 ruff

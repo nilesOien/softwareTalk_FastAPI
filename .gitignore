@@ -9,3 +9,6 @@ section_13_rust_comparison/Rust/get-whole-database/Cargo.lock
 section_13_rust_comparison/Rust/get-whole-database/target/
 section_13_rust_comparison/py.json
 section_13_rust_comparison/rust.json
+softwareTalk_FastAPI/section_06_unit_tests_and_git_hooks/.coverage
+section_06_unit_tests_and_git_hooks/coverageReport
+section_06_unit_tests_and_git_hooks/.coverage
