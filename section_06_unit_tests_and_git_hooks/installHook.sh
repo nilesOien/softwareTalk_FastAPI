@@ -2,6 +2,7 @@
 
 cd ../.git/hooks/
 ln -sf ../../section_06_unit_tests_and_git_hooks/preCommitHook.sh pre-commit
+echo Hook installed
 
 exit 0
 

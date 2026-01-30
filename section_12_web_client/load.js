@@ -45,11 +45,11 @@ async function load() {
  num_loaded=0;
 
  // url is something like this :
- // "http://localhost:8000/database-dict?minTime={args.minTime}&maxTime={args.maxTime}&siteCSV={args.siteCSV}" 
+ // "http://localhost:8009/database-dict?minTime={args.minTime}&maxTime={args.maxTime}&siteCSV={args.siteCSV}" 
 
  let startTime=document.getElementById('startBox').value;
  let endTime  =document.getElementById('endBox').value;
- url="http://localhost:8000/database-dict?minTime=";
+ url="http://localhost:8009/database-dict?minTime=";
  url = url + startTime;
  url = url + "&maxTime=" + endTime;
 

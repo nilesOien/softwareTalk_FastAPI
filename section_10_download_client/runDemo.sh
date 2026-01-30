@@ -5,7 +5,7 @@
 # for this to work.
 #
 # Note that you can :
-# uv run downloadClient.py --help
+# uv run ./downloadClient.py --help
 # to get command line help, since standard argument parsing is used.
 #
 

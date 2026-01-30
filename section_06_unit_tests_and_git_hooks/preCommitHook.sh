@@ -20,32 +20,38 @@ then
  cd section_06_unit_tests_and_git_hooks
 fi
 
-# Run unit tests. Exit with status if they fail.
+final_exit="0"
+# Run unit tests.
 # They fail if they have non-zero status.
 echo Running unit tests...
 uv run pytest -v
 status="$?"
 if [ "$status" -ne 0 ]
 then
- echo Unit tests failed, exiting
- exit $status
+ echo pytest unit tests failed
+ final_exit="-1"
 fi
 
-# Run ruff code checks - similar, exit if they fail.
+# Run ruff code checks - similar
 echo
 echo Running code checks...
 uv run ruff check
 status="$?"
 if [ "$status" -ne 0 ]
 then
- echo Code check failed, exiting
- exit $status
+ echo ruff code check failed
+ final_exit="-1"
 fi
 
-# If we made it to here, we passed.
-# We can exit with 0 status
-# which means that the commit can go ahead.
-echo
-echo Passed unit tests and code check
-exit 0
+# Say something
+if [ "$final_exit" -eq 0 ]
+then
+ echo git hook : Tests passed, commit accepted
+else
+ echo git hook : There were issues, commit rejected
+fi
+
+# Exit with status that git will use to
+# evaluate the commit.
+exit "$final_exit"
 

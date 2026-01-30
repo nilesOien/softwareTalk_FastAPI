@@ -27,7 +27,7 @@ parser.add_argument('--verbose', action='store_true', help='Activate verbose mes
 
 args = parser.parse_args()
 
-apiURL=f"http://127.0.0.1:8000/database-dict?minTime={args.minTime}&maxTime={args.maxTime}&siteCSV={args.siteCSV}"
+apiURL=f"http://127.0.0.1:8009/database-dict?minTime={args.minTime}&maxTime={args.maxTime}&siteCSV={args.siteCSV}"
 
 print(f"Using API at {apiURL}")
 

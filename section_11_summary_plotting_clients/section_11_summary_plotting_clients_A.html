@@ -6,6 +6,16 @@
 
 <BODY>
 
+<table class="indexTable">
+<td class="coral"><a href="../section_10_download_client/section_10_download_client_B.html">
+                Previous</a>
+</td>
+<td class="fullWidth coral"></td>
+<td class="coral rightText"><a href="section_11_summary_plotting_clients_B.html">
+                Next </a>
+</td>
+</table>
+
 <P class="center large">Plotting summaries in R</p>
 
 <P>
@@ -22,7 +32,7 @@ This R script plots a summary with the bin size set to a day.
 # in R.
 #
 # Reads from URLs like
-# http://127.0.0.1:8000/database-summary?minTime=20251001000000&maxTime=20251031235959&site=L
+# http://127.0.0.1:8009/database-summary?minTime=20251001000000&maxTime=20251031235959&site=L
 # and writes daily summary charts to png files.
 #
 # The server from section 09 has to be running for this to work.
@@ -41,7 +51,7 @@ library(jsonlite)
 dir.create('daily')
 # Loop through the sites.
 siteCodes <- c('B', 'C', 'L', 'T', 'U')
-baseURL='http://127.0.0.1:8000/database-summary?minTime=20251001000000&maxTime=20251031235959&site='
+baseURL='http://127.0.0.1:8009/database-summary?minTime=20251001000000&maxTime=20251031235959&site='
 
 for (siteCode in siteCodes) {
   print(paste("Processing for site", siteCode))

@@ -5,7 +5,7 @@
 # in R.
 #
 # Reads from URLs like
-# http://127.0.0.1:8000/database-summary?minTime=20251020000000&maxTime=20251020235959&binBy=hour&site=L
+# http://127.0.0.1:8009/database-summary?minTime=20251020000000&maxTime=20251020235959&binBy=hour&site=L
 # and writes daily summary charts to png files.
 #
 # The server from section 09 has to be running for this to work.
@@ -24,7 +24,7 @@ library(jsonlite)
 dir.create('hourly')
 # Loop through the sites.
 siteCodes <- c('B', 'C', 'L', 'T', 'U')
-baseURL='http://127.0.0.1:8000/database-summary?minTime=20251020000000&maxTime=20251020235959&binBy=hour&site='
+baseURL='http://127.0.0.1:8009/database-summary?minTime=20251020000000&maxTime=20251020235959&binBy=hour&site='
 dateStr='20251020'
 
 for (siteCode in siteCodes) {
