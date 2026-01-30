@@ -1,5 +1,5 @@
 
-# Section 5.0
+# Section 6.0
 
 This demostrates the basic idea of unit tests for FastAPI apps,
 as well as git hooks, which can gatekeep the code that is

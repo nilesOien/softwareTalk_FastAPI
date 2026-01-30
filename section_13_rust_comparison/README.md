@@ -1,4 +1,4 @@
-#Section 13 : Rust versus Python
+# Section 13 : Rust versus Python
 
 Rust has to be installed to do this. I suspect most folks I know
 will skip it.
