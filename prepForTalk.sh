@@ -42,3 +42,6 @@ done
 cd section_06_unit_tests_and_git_hooks
 ./generate_test_coverage.sh
 ./installHook.sh
+cp demoFastapi.py demoFastapi.py.good
+cp demoFastapi.py.bad demoFastapi.py
+
