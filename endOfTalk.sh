@@ -37,4 +37,4 @@ done
 cd section_06_unit_tests_and_git_hooks
 ./removeHook.sh
 cp demoFastapi.py demoFastapi.py.bad
-cp demoFastapi.py.good demoFastapi.py
+mv demoFastapi.py.good demoFastapi.py
