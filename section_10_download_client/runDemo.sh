@@ -10,11 +10,11 @@
 #
 
 rm -rf data
-startSec=`date --utc +%s`
+startSec=`date -u +%s`
 uv run ./downloadClient.py --minTime 20251027000000 --maxTime 20251027235959 \
 	                    --outDir ./data --siteCSV L,C
 
-endSec=`date --utc +%s`
+endSec=`date -u +%s`
 elapsedSec=`expr "$endSec" - "$startSec"`
 
 echo Download size in $elapsedSec seconds :
