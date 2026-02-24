@@ -16,12 +16,12 @@
 </td>
 </table>
 
-<P class="center large">Downloading the data in parallel</p>
+<P class="center large">Downloading the data</p>
 
 <P>
 With the server from the pervious section running, 
-this shell script runs a Python program that uses the parfive
-package to download the data in parallel.
+this shell script runs a Python program
+that downloads the data.
 </p>
 
 
@@ -39,11 +39,11 @@ package to download the data in parallel.
 #
 
 rm -rf data
-startSec=`date --utc +%s`
-uv run ./downloadClient.py --minTime 20251027000000 --maxTime 20251027235959 \
-	                    --outDir ./data --siteCSV L,C
+startSec=`date -u +%s`
+uv run ./downloadClient.py --minTime 20251027050000 --maxTime 20251027060000 \
+                            --outDir ./data --siteCSV L,C --verbose
 
-endSec=`date --utc +%s`
+endSec=`date -u +%s`
 elapsedSec=`expr "$endSec" - "$startSec"`
 
 echo Download size in $elapsedSec seconds :

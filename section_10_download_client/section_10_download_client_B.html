@@ -16,7 +16,7 @@
 </td>
 </table>
 
-<P class="center large">Downloading the data in parallel</p>
+<P class="center large">Downloading the data</p>
 
 <P>
 Here's the Python code :
@@ -28,7 +28,7 @@ Here's the Python code :
 #!/usr/bin/env python
 
 # Demonstrates how to grab H-Alpha URLs from the API set up
-# in section 9 and download them in parallel.
+# in section 9 and download them.
 # The server in section 9 must be running for this to work.
 #
 # Note that you can :
@@ -36,7 +36,8 @@ Here's the Python code :
 # to get command line help, since standard argument parsing is used.
 
 
-from parfive import Downloader
+import os
+from urllib.parse import urlsplit
 import requests
 import argparse
 
@@ -69,23 +70,33 @@ except requests.exceptions.RequestException as e:
 
 print(f"Received info for {len(dictionaryList)} data files")
 
-# Sort so that we do the largest file first.
-# Probably not a big difference but may be a bit better.
-dictionaryList = sorted(dictionaryList, key=lambda x: x['size'], reverse=True)
+# Create the target directory
+os.makedirs(args.outDir, exist_ok=True)
 
-# Create a Downloader object
-dl = Downloader()
-
-# Queue up the list of URLs.
+count=0
 for dictionary in dictionaryList :
-    dl.enqueue_file(dictionary['url'], path=args.outDir)
+    count += 1
+    url=dictionary['url']
+    if args.verbose :
+        print(f"Downloading {dictionary['size']} bytes from {dictionary['url']}")
+        print(f"(file {count} of {len(dictionaryList)})")
+
+    path=urlsplit(url).path
+    fn=os.path.basename(path) # Filename from URL
+    outFile= args.outDir + '/' + fn
+
+    response = requests.get(url)
+    # Raise an exception for bad status codes (4xx or 5xx)
+    response.raise_for_status()
+
+    with open(outFile, 'wb') as file:
+        file.write(response.content)
+
     if args.verbose :
         s = dictionary['size']
         u = dictionary['url']
-        print(f'Added {s} bytes from {u}')
-
-# Start the download process
-files = dl.download()
+        print(f'Downloaded to {outFile}')
+        print('')
 
 print('Download done')
 

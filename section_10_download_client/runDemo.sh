@@ -11,8 +11,8 @@
 
 rm -rf data
 startSec=`date -u +%s`
-uv run ./downloadClient.py --minTime 20251027000000 --maxTime 20251027235959 \
-	                    --outDir ./data --siteCSV L,C
+uv run ./downloadClient.py --minTime 20251027050000 --maxTime 20251027060000 \
+	                    --outDir ./data --siteCSV L,C --verbose
 
 endSec=`date -u +%s`
 elapsedSec=`expr "$endSec" - "$startSec"`
