@@ -7,7 +7,7 @@ then
 fi
 
 # Make a virtual environment
-python -m venv $HOME/softwareTalk_FastAPI/section_02_uv/pip/pyEnv
+python3 -m venv $HOME/softwareTalk_FastAPI/section_02_uv/pip/pyEnv
 
 # Enter the virtual environment
 source $HOME/softwareTalk_FastAPI/section_02_uv/pip/pyEnv/bin/activate
